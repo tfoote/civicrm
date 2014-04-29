@@ -127,6 +127,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # HTTP instead of HTTPS depending on your configuration. Also change the
   # validation key to validation.pem.
   #
+  config.vm.provision "shell",
+    inline: "sudo apt-get update"
+
+
   config.vm.provision :chef_solo do |chef|
     chef.cookbooks_path = "cookbooks"
     dna = JSON.parse(File.read("node.json"))
